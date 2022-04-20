@@ -7,23 +7,48 @@ use App\Repository\BuildingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: BuildingRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: [
+        'get' => [
+            'normalization_context' => [
+                'groups' => ['read:Building:collection'],
+                'openapi_definition_name' => 'Collection'
+            ],
+            'pagination_enabled' => true,
+            "openapi_context" => [
+                'summary' => 'Accès à tous les buildings',
+                'description' => 'La route permet de retourner tous les nom et code postal\'s des buildings',
+                'responses' => [
+                    '200' => [
+                        'description' => 'Succès, les buildings sont retournées'
+                    ]
+                ]
+            ]
+        ]
+    ],
+    normalizationContext:   ['groups' => ['read:Building:collection']],
+)]
 class Building
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['read:Building:collection'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['read:Building:collection'])]
     private $nom;
 
     #[ORM\Column(type: 'string')]
+    #[Groups(['read:Building:collection'])]
     private $zipcode;
 
     #[ORM\OneToMany(mappedBy: 'building', targetEntity: Piece::class)]
+    #[Groups(['read:Building:collection'])]
     private $pieces;
 
     public function __construct()
