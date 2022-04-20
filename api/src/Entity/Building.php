@@ -29,6 +29,26 @@ use Symfony\Component\Serializer\Annotation\Groups;
             ]
         ]
     ],
+    itemOperations: [
+        'get' => [
+            'normalization_context' =>  [
+                'groups' => ['read:Building:collection'],
+                'openapi_definition_name' => 'Detail'
+            ],
+            "openapi_context" => [
+                'summary' => 'Accès à un building',
+                'description' => 'La route permet de retourner les informations d\'un building spécifier par son id',
+                'responses' => [
+                    '200' => [
+                        'description' => 'Succès, le nom et le code postal du building sont retournée'
+                    ],
+                    '404' => [
+                        'description' => 'Building introuvable'
+                    ]
+                ]
+            ]
+        ]
+    ],
     normalizationContext:   ['groups' => ['read:Building:collection']],
 )]
 class Building
