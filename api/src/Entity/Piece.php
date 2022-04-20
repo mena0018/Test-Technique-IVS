@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PieceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PieceRepository::class)]
 #[ApiResource(
@@ -70,15 +71,31 @@ class Piece
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups([
+        'read:Piece:collection',
+        'read:Piece:item',
+        'read:Building:item'
+    ])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups([
+        'read:Piece:collection',
+        'read:Piece:item',
+        'read:Building:item'
+    ])]
     private $nom;
 
     #[ORM\Column(type: 'string')]
+    #[Groups([
+        'read:Piece:collection',
+        'read:Piece:item',
+        'read:Building:item'
+    ])]
     private $nbPers;
 
     #[ORM\ManyToOne(targetEntity: Building::class, inversedBy: 'pieces')]
+    #[Groups(['read:Piece:item'])]
     private $building;
 
     public function getId(): ?int

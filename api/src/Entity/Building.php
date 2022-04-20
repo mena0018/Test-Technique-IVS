@@ -73,15 +73,27 @@ class Building
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read:Building:collection', 'read:Building:item'])]
+    #[Groups([
+        'read:Building:collection',
+        'read:Building:item',
+        'read:Piece:item'
+    ])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['read:Building:collection', 'read:Building:item'])]
+    #[Groups([
+        'read:Building:collection',
+        'read:Building:item',
+        'read:Piece:item'
+    ])]
     private $nom;
 
     #[ORM\Column(type: 'string')]
-    #[Groups(['read:Building:collection', 'read:Building:item'])]
+    #[Groups([
+        'read:Building:collection',
+        'read:Building:item',
+        'read:Piece:item'
+    ])]
     private $zipcode;
 
     #[ORM\OneToMany(mappedBy: 'building', targetEntity: Piece::class)]
