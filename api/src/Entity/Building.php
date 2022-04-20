@@ -27,11 +27,28 @@ use Symfony\Component\Serializer\Annotation\Groups;
                     ]
                 ]
             ]
+        ],
+        'post' => [
+            "openapi_context" => [
+                'summary' => 'Ajout de building',
+                'description' => 'La route permet d\'ajouter un building. Pour cela veuillez spécifier un nom, code postal et des pièces s\'il en possède' ,
+                'responses' => [
+                    '201' => [
+                        'description' => 'Le building à été ajoutée avec succès'
+                    ],
+                    '400' => [
+                        'description' => 'Saisie incorrecte'
+                    ],
+                    '422' => [
+                        'description' => 'Entité non traitable'
+                    ]
+                ]
+            ]
         ]
     ],
     itemOperations: [
         'get' => [
-            'normalization_context' =>  [
+            'normalization_context' => [
                 'groups' => ['read:Building:collection'],
                 'openapi_definition_name' => 'Detail'
             ],
@@ -49,7 +66,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             ]
         ]
     ],
-    normalizationContext:   ['groups' => ['read:Building:collection']],
+    normalizationContext: ['groups' => ['read:Building:collection']],
 )]
 class Building
 {
