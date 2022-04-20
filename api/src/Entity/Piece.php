@@ -21,6 +21,9 @@ class Piece
     #[ORM\Column(type: 'integer')]
     private $nbPers;
 
+    #[ORM\ManyToOne(targetEntity: Building::class, inversedBy: 'pieces')]
+    private $building;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -46,6 +49,18 @@ class Piece
     public function setNbPers(int $nbPers): self
     {
         $this->nbPers = $nbPers;
+
+        return $this;
+    }
+
+    public function getBuilding(): ?Building
+    {
+        return $this->building;
+    }
+
+    public function setBuilding(?Building $building): self
+    {
+        $this->building = $building;
 
         return $this;
     }
