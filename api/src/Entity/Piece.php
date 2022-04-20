@@ -18,7 +18,7 @@ class Piece
     #[ORM\Column(type: 'string', length: 255)]
     private $nom;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string')]
     private $nbPers;
 
     #[ORM\ManyToOne(targetEntity: Building::class, inversedBy: 'pieces')]
@@ -41,12 +41,12 @@ class Piece
         return $this;
     }
 
-    public function getNbPers(): ?int
+    public function getNbPers(): ?string
     {
         return $this->nbPers;
     }
 
-    public function setNbPers(int $nbPers): self
+    public function setNbPers(string $nbPers): self
     {
         $this->nbPers = $nbPers;
 
