@@ -24,6 +24,23 @@ use Doctrine\ORM\Mapping as ORM;
                     ]
                 ]
             ]
+        ],
+        'post' => [
+            "openapi_context" => [
+                'summary' => 'Ajout de pièces',
+                'description' => 'La route permet d\'ajouter une pièce. Pour cela veuillez spécifier un nom, un nombre de personne par pièce et le building associé',
+                'responses' => [
+                    '201' => [
+                        'description' => 'La pièce à été ajoutée avec succès'
+                    ],
+                    '400' => [
+                        'description' => 'Saisie incorrecte'
+                    ],
+                    '422' => [
+                        'description' => 'Entité non traitable'
+                    ]
+                ]
+            ]
         ]
     ],
     itemOperations: [
