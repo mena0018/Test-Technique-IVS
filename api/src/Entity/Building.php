@@ -49,7 +49,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
     itemOperations: [
         'get' => [
             'normalization_context' => [
-                'groups' => ['read:Building:collection'],
+                'groups' => ['read:Building:collection', 'read:Building:item'],
                 'openapi_definition_name' => 'Detail'
             ],
             "openapi_context" => [
@@ -73,19 +73,19 @@ class Building
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(['read:Building:collection'])]
+    #[Groups(['read:Building:collection', 'read:Building:item'])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(['read:Building:collection'])]
+    #[Groups(['read:Building:collection', 'read:Building:item'])]
     private $nom;
 
     #[ORM\Column(type: 'string')]
-    #[Groups(['read:Building:collection'])]
+    #[Groups(['read:Building:collection', 'read:Building:item'])]
     private $zipcode;
 
     #[ORM\OneToMany(mappedBy: 'building', targetEntity: Piece::class)]
-    #[Groups(['read:Building:collection'])]
+    #[Groups(['read:Building:collection', 'read:Building:item'])]
     private $pieces;
 
     public function __construct()

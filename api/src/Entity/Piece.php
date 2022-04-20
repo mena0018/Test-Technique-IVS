@@ -7,7 +7,26 @@ use App\Repository\PieceRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PieceRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    collectionOperations: [
+        'get' => [
+            'normalization_context' => [
+                'groups' => ['read:Piece:collection'],
+                'openapi_definition_name' => 'Collection'
+            ],
+            'pagination_enabled' => true,
+            "openapi_context" => [
+                'summary' => 'Accès à toutes les pièces',
+                'description' => 'La route permet de retourner les nom des pièces, le nombre de personnes par pièces ainsi que leur building',
+                'responses' => [
+                    '200' => [
+                        'description' => 'Succès, les pièces sont retournées'
+                    ]
+                ]
+            ]
+        ]
+    ]
+)]
 class Piece
 {
     #[ORM\Id]
