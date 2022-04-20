@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
             'pagination_enabled' => true,
             "openapi_context" => [
                 'summary' => 'Accès à toutes les pièces',
-                'description' => 'La route permet de retourner les nom des pièces, le nombre de personnes par pièces ainsi que leur building',
+                'description' => 'La route permet de retourner les nom des pièces, le nombre de personnes par pièce ainsi que leur building',
                 'responses' => [
                     '200' => [
                         'description' => 'Succès, les pièces sont retournées'
@@ -25,7 +25,28 @@ use Doctrine\ORM\Mapping as ORM;
                 ]
             ]
         ]
-    ]
+    ],
+    itemOperations: [
+        'get' => [
+            'normalization_context' => [
+                'groups' => ['read:Piece:collection', 'read:Piece:item'],
+                'openapi_definition_name' => 'Detail'
+            ],
+            "openapi_context" => [
+                'summary' => 'Accès à une pièce',
+                'description' => 'La route permet de retourner les informations d\'une pièce spécifier par son id',
+                'responses' => [
+                    '200' => [
+                        'description' => 'Succès, le nom de la pièce, son nombre de personnes ainsi que son building sont retournée'
+                    ],
+                    '404' => [
+                        'description' => 'Pièce introuvable'
+                    ]
+                ]
+            ]
+        ]
+    ],
+    normalizationContext: ['groups' => ['read:Piece:collection']],
 )]
 class Piece
 {
