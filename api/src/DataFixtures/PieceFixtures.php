@@ -2,23 +2,23 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Building;
+use App\Entity\Piece;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class BuildingFixtures extends Fixture
+class PieceFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
 
         for ($i=1; $i<11; $i++) {
-            $building = new Building();
-            $building->setNom("Appartement N° " . $i);
-            $building->setZipcode( $faker->postcode);
-            $manager->persist($building);
+            $piece = new Piece();
+            $piece->setNom("Pièce N° " . $i);
+            $piece->setNbPers($faker->numberBetween(1, 5));
+            $manager->persist($piece);
         }
-        $manager->flush($building);
+        $manager->flush($piece);
     }
 }
