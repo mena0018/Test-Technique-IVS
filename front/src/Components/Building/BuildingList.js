@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import "../../styles/List.css";
 
 export default function BuildingList({ datas }) {
+   
   // On récupère la liste des buildings que l'on parcours afin de renvoyer les données d'un building par composant. On donne un identifiant pour la props key pour que React s'y retrouve.
-
   const listBuildings = datas.map((building) => (
-    <BuildingItem datas={building} key={building.id} />
+    <BuildingItem dataBuilding={building} key={building.id} />
   ));
 
   return (
