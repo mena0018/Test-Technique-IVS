@@ -121,6 +121,7 @@ class Piece
     #[Groups([
         'read:Piece:collection',
         'read:Piece:item',
+        'read:Building:collection',
         'read:Building:item'
     ])]
     private $nbPers;
