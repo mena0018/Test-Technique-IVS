@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'pagination_enabled' => true,
             "openapi_context" => [
                 'summary' => 'Accès à toutes les pièces',
-                'description' => 'La route permet de retourner les nom des pièces, le nombre de personnes par
+                'description' => 'La route permet de retourner les noms des pièces, le nombre de personnes par
                                   pièce ainsi que leur building',
                 'responses' => [
                     '200' => [
@@ -32,7 +32,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             "openapi_context" => [
                 'summary' => 'Ajout de pièces',
                 'description' => 'La route permet d\'ajouter une pièce. Pour cela veuillez spécifier un nom,
-                                  un nombre de personne par pièce et le building associé',
+                                  un nombre de personnes par pièce et le building associé',
                 'responses' => [
                     '201' => [
                         'description' => 'La pièce à été ajoutée avec succès'
