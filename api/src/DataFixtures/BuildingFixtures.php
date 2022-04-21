@@ -15,7 +15,7 @@ class BuildingFixtures extends Fixture
 
         for ($i=1; $i<11; $i++) {
             $building = new Building();
-            $building->setNom("Appartement N° " . $i);
+            $building->setNom("Building N° " . $i);
             $building->setZipcode( $faker->postcode);
             $manager->persist($building);
         }

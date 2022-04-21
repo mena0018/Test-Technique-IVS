@@ -20,7 +20,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'pagination_enabled' => true,
             "openapi_context" => [
                 'summary' => 'Accès à tous les buildings',
-                'description' => 'La route permet de retourner tous les nom et code postal\'s des buildings',
+                'description' => 'La route permet de retourner tous les noms, codes postaux ainsi 
+                                  que les pièces liées aux buildings. Pour plus de détails sur les pièces associés
+                                  aux buildings, utiliser la route api/buildings/{id}/',
                 'responses' => [
                     '200' => [
                         'description' => 'Succès, les buildings sont retournées'
@@ -31,7 +33,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'post' => [
             "openapi_context" => [
                 'summary' => 'Ajout de building',
-                'description' => 'La route permet d\'ajouter un building. Pour cela veuillez spécifier un nom, code postal et des pièces s\'il en possède' ,
+                'description' => 'La route permet d\'ajouter un building. Pour cela veuillez spécifier un nom, code postal et les pièces associées à ce building.',
                 'responses' => [
                     '201' => [
                         'description' => 'Le building à été ajoutée avec succès'
