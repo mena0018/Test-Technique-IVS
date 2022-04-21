@@ -1,6 +1,6 @@
 import BuildingItem from "./BuildingItem";
 import PropTypes from "prop-types";
-import "../../styles/BuildingList.css";
+import "../../styles/List.css";
 
 export default function BuildingList({ datas }) {
   // On récupère la liste des buildings que l'on parcours afin de renvoyer les données d'un building par composant. On donne un identifiant pour la props key pour que React s'y retrouve.

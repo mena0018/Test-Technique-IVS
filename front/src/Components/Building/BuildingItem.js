@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import "../../styles/BuildingItem.css";
+import "../../styles/Item.css";
 import axios from "axios";
 
 export default function BuildingItem({ datas }) {
@@ -12,7 +12,7 @@ export default function BuildingItem({ datas }) {
       axios
         .get(`${apiBuilding}${datas.id}/countNbPers`)
         .then((res) => setNbPers(res.data));
-    }, [apiBuilding]);
+    }, [apiBuilding, datas.id]);
 
   return (
     <div className="building-item">
