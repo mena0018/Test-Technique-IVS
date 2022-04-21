@@ -1,18 +1,18 @@
 # 1) On commence par installer composer :
-  * https://getcomposer.org/download/
-  * Run Composer-Setup.exe
+* https://getcomposer.org/download/
+* Run Composer-Setup.exe
 
-  
+
 # 2) On configure l'API :
 ```bash
 git clone https://github.com/mena0018/Test-Technique-IVS.git
-cd IVS/api/
+cd Test-Technique-IVS/api/
 c/c le .env en .env.local
-php bin/console make:migration
-php bin/console doctrine:migrations:migrate => On éxécute les migrations qui sont dans migrations/
 composer install
-bin/console doctrine:fixture:load => On génère des données
+php bin/console make:migration => On éxécute les migrations pour créer les tables.
+bin/console doctrine:fixture:load => On génère des données factices pour alimenter les tables.
 ```
+Remplir manuellement le champs building_id de la table pièce directement depuis la bd
 
 # 3) On lance l'API :
 
@@ -21,7 +21,7 @@ composer start
 http://localhost:8000/api
 ```
 
- 
+
 
 
 
