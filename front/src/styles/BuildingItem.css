@@ -1,0 +1,22 @@
+.building-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 400px;
+  height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease box-shadow;
+  padding: 15px;
+}
+
+.building-item:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+p span {
+   font-weight: bold;
+}

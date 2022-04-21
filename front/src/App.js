@@ -1,5 +1,5 @@
 import Explorer from './Components/Explorer';
-import './index.css';
+import './styles/index.css';
 
 function App() {
   return (
