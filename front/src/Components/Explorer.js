@@ -21,14 +21,14 @@ export default function Explorer() {
     axios.get(`${apiBuilding}`)
        //   Je met à jour le state de dataBuilding avec les bonne données
       .then((res) => setDataBuilding(res.data["hydra:member"]));
-  }, []);
+  }, [apiBuilding]);
 
   
    //   Je met à jour le state de dataPiece avec les bonne données
   useEffect(() => {
    axios.get(`${apiPiece}`)
      .then((res) => setDataPiece(res.data["hydra:member"]));
- }, []);
+ }, [apiPiece]);
 
 
   return (
