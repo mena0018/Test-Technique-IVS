@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\BuildingCountController;
 use App\Repository\BuildingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -63,6 +64,31 @@ use Symfony\Component\Serializer\Annotation\Groups;
                     ],
                     '404' => [
                         'description' => 'Building introuvable'
+                    ]
+                ]
+            ]
+        ],
+        'countNbPers' => [
+            'method' => 'GET',
+            'path' => '/buildings/{id}/countNbPers',
+            'controller' => BuildingCountController::class,
+            'filters' => [],
+            'pagination_enabled' => false,
+            'openapi_context' => [
+                'summary' => 'Récupère le nombre de personnes au total dans un building',
+                'description' => 'La route permet de compter le nombre total de personnes dans un building 
+                                  et renvoie le résultat sous la forme d\'un entier au  format JSON',
+                'responses' => [
+                    '200' => [
+                        'description' => 'Nombre total de personnes retourné avec succès',
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'int',
+                                    'example' => 10
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]
