@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\PieceCountController;
 use App\Repository\PieceRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -18,7 +19,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
             'pagination_enabled' => true,
             "openapi_context" => [
                 'summary' => 'Accès à toutes les pièces',
-                'description' => 'La route permet de retourner les nom des pièces, le nombre de personnes par pièce ainsi que leur building',
+                'description' => 'La route permet de retourner les nom des pièces, le nombre de personnes par
+                                  pièce ainsi que leur building',
                 'responses' => [
                     '200' => [
                         'description' => 'Succès, les pièces sont retournées'
@@ -29,7 +31,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
         'post' => [
             "openapi_context" => [
                 'summary' => 'Ajout de pièces',
-                'description' => 'La route permet d\'ajouter une pièce. Pour cela veuillez spécifier un nom, un nombre de personne par pièce et le building associé',
+                'description' => 'La route permet d\'ajouter une pièce. Pour cela veuillez spécifier un nom,
+                                  un nombre de personne par pièce et le building associé',
                 'responses' => [
                     '201' => [
                         'description' => 'La pièce à été ajoutée avec succès'
@@ -42,7 +45,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
                     ]
                 ]
             ]
-        ]
+        ],
     ],
     itemOperations: [
         'get' => [
@@ -55,10 +58,36 @@ use Symfony\Component\Serializer\Annotation\Groups;
                 'description' => 'La route permet de retourner les informations d\'une pièce spécifier par son id',
                 'responses' => [
                     '200' => [
-                        'description' => 'Succès, le nom de la pièce, son nombre de personnes ainsi que son building sont retournée'
+                        'description' => 'Succès, le nom de la pièce, son nombre de personnes ainsi que son 
+                                          building sont retournée'
                     ],
                     '404' => [
                         'description' => 'Pièce introuvable'
+                    ]
+                ]
+            ]
+        ],
+        'countNbPers' => [
+            'method' => 'GET',
+            'path' => '/pieces/{id}/countNbPers',
+            'controller' => PieceCountController::class,
+            'filters' => [],
+            'pagination_enabled' => false,
+            'openapi_context' => [
+                'summary' => 'Récupère le nombre de personnes au total dans une pièce',
+                'description' => 'La route permet de compter le nombre total de personnes dans une pièce 
+                                  et renvoie le résultat sous la forme d\'un entier au  format JSON',
+                'responses' => [
+                    '200' => [
+                        'description' => 'Nombre total de personnes retourné avec succès',
+                        'content' => [
+                            'application/json' => [
+                                'schema' => [
+                                    'type' => 'int',
+                                    'example' => 5
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]
