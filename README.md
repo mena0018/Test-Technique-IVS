@@ -10,6 +10,7 @@ cd Test-Technique-IVS/api/
 c/c le .env en .env.local
 composer install
 php bin/console make:migration => On éxécute les migrations pour créer les tables.
+php bin/console doctrine:migrations:migrate
 bin/console doctrine:fixture:load => On génère des données factices pour alimenter les tables.
 ```
 Remplir manuellement le champs building_id de la table pièce directement depuis la bd
