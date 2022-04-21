@@ -3,7 +3,7 @@ h1 {
   text-align: center;
 }
 
-.building-list {
+.building-list, .pieces-list {
   display: flex;
   justify-content: center;
   align-items: center;
